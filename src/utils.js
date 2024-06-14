@@ -1,4 +1,3 @@
-// npm i @json2csv/node
 import { URL } from "url";
 import { Parser } from "json2csv";
 import * as fs from "node:fs";
