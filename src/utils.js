@@ -9,12 +9,12 @@ export function buildSearchUrl(baseUrl, path, parameters) {
   const query = `${parameters.primaryCategory || ""} ${
     parameters.secondaryCategory || ""
   } ${parameters.geography || ""} ${parameters.dateRange || ""}`.trim();
-  
+
   if (query) {
     url.searchParams.append("q", query);
   }
 
-  console.log(url.toString());
+  // console.log(url.toString());
   return url.toString();
 }
 

@@ -12,7 +12,7 @@ async function main() {
   const links = await crawl(parameters);
   if (links && links.length > 0) {
     const data = links.map((link) => ({ URL: link }));
-    await saveToCSV(data, "output.csv");
+    saveToCSV(data, "output.csv");
   } else {
     console.log("No links found.");
   }
