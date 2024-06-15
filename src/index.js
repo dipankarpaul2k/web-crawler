@@ -50,6 +50,9 @@ async function main() {
 
   const options = await inquirer.prompt(questions);
 
+  const baseUrl = options.baseUrl;
+  const path = options.path;
+
   const parameters = {
     primaryCategory: options.primaryCategory,
     secondaryCategory: options.secondaryCategory,
@@ -57,10 +60,7 @@ async function main() {
     dateRange: options.dateRange,
   };
 
-  const baseUrl = options.baseUrl;
-  const path = options.path;
-
-  console.log("Fetching data...");
+  console.log("Crawling...");
   const links = await crawl(baseUrl, path, parameters);
   if (links && links.length > 0) {
     const data = links.map((link) => ({ URL: link }));
