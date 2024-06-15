@@ -9,10 +9,10 @@ export function parseHTML(html, selectors, baseUrl) {
     const link = $(el).attr("href");
     let url;
 
-    if (link.slice(0, 1) === "/") {
+    if (link.startsWith("/")) {
       // relative link
       url = new URL(link, baseUrl);
-    } else if (link.slice(0, 1) === "#") {
+    } else if (link.startsWith("#")) {
       // relative link
       url = new URL(link, baseUrl);
     } else {
