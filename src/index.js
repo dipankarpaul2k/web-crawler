@@ -6,6 +6,18 @@ async function main() {
   const questions = [
     {
       type: "input",
+      name: "baseUrl",
+      message: "Enter the base URL to crawl:",
+      default: "https://www.bbc.com",
+    },
+    {
+      type: "input",
+      name: "path",
+      message: "Enter the URL path:",
+      default: "/search",
+    },
+    {
+      type: "input",
       name: "primaryCategory",
       message: "Enter the primary category:",
       default: "News",
@@ -45,8 +57,11 @@ async function main() {
     dateRange: options.dateRange,
   };
 
+  const baseUrl = options.baseUrl;
+  const path = options.path;
+
   console.log("Fetching data...");
-  const links = await crawl(parameters);
+  const links = await crawl(baseUrl, path, parameters);
   if (links && links.length > 0) {
     const data = links.map((link) => ({ URL: link }));
     saveToCSV(data, options.output);

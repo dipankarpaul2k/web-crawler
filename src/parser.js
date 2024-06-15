@@ -7,17 +7,21 @@ export function parseHTML(html, selectors, baseUrl) {
 
   $(selectors.link).each((i, el) => {
     const link = $(el).attr("href");
+    let url;
+
     if (link.slice(0, 1) === "/") {
       // relative link
-      const url = new URL(link, baseUrl);
-      links.push(url.toString());
+      url = new URL(link, baseUrl);
     } else if (link.slice(0, 1) === "#") {
       // relative link
-      const url = new URL(link, baseUrl);
-      links.push(url.toString());
+      url = new URL(link, baseUrl);
     } else {
       // absolute link
-      links.push(link);
+      url = link;
+    }
+
+    if (!links.includes(url.toString())) {
+      links.push(url.toString());
     }
   });
 
